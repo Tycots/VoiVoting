@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // GitHub Pages SPA fallback: redirect unknown paths back to index.html
+      ;(function () {
+        var path = location.pathname
+        var base = path.match(/^(\/[^/]+\/)/)
+        var prefix = base ? base[1] : '/'
+        var route = path.replace(prefix, '') || 'index.html'
+        if (route !== 'index.html' && !route.includes('.')) {
+          location.replace(prefix + 'index.html?p=' + encodeURIComponent(route))
+        }
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>
