@@ -1,0 +1,37 @@
+{
+  "name": "VoiGovernance",
+  "methods": [
+    {
+      "name": "change_admin",
+      "args": [{ "type": "address", "name": "new_admin" }],
+      "returns": { "type": "void" }
+    },
+    {
+      "name": "update_whitelist",
+      "args": [{ "type": "address[]", "name": "new_whitelist" }],
+      "returns": { "type": "void" }
+    },
+    {
+      "name": "initialize_proposal",
+      "args": [
+        { "type": "uint64", "name": "slot" },
+        { "type": "uint64", "name": "proposal_id" },
+        { "type": "uint64", "name": "duration" }
+      ],
+      "returns": { "type": "void" }
+    },
+    {
+      "name": "cast_vote",
+      "args": [
+        { "type": "uint64", "name": "slot" },
+        { "type": "uint64", "name": "vote_type" }
+      ],
+      "returns": { "type": "void" }
+    },
+    {
+      "name": "evaluate_expiration",
+      "args": [{ "type": "uint64", "name": "slot" }],
+      "returns": { "type": "void" }
+    }
+  ]
+}
