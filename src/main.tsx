@@ -8,33 +8,18 @@ if (typeof window !== 'undefined') {
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { NetworkId, WalletManager, WalletId } from '@txnlab/use-wallet'
 import { WalletProvider } from '@txnlab/use-wallet-react'
 import App from './App'
 import './index.css'
+import { walletManager } from './lib/wallet'
 
-// 2. Initialize WalletManager with v4 AlgodConfig property names
-const walletManager = new WalletManager({
-  wallets: [
-    WalletId.KIBISIS,
-    WalletId.LUTE,
-    WalletId.PERA,
-    WalletId.DEFLY,
-  ],
-  networks: {
-    [NetworkId.MAINNET]: {
-      algod: {
-        baseServer: 'https://mainnet-api.voi.nodly.io',
-        port: '',
-        token: '',
-      },
-    },
-  },
-  defaultNetwork: NetworkId.MAINNET,
-})
+const rootEl = document.getElementById('root')
 
-// 3. Mount App wrapped inside WalletProvider
-ReactDOM.createRoot(document.getElementById('root')!).render(
+if (!rootEl) {
+  throw new Error('Root element #root was not found')
+}
+
+ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
     <WalletProvider manager={walletManager}>
       <App />
