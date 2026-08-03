@@ -1,14 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { WalletProvider } from '@txnlab/use-wallet-react'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import App from './App'
-import { walletManager } from './lib/wallet'
 import './index.css'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <WalletProvider manager={walletManager}>
+const rootElement = document.getElementById('root')
+
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
       <App />
-    </WalletProvider>
-  </StrictMode>,
-)
+    </React.StrictMode>
+  )
+}

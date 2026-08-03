@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
-// GitHub Pages serves project sites from /repo-name/
-const base = process.env.VITE_BASE_PATH ?? '/VoiVoting/'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 export default defineConfig({
-  base,
-  plugins: [react()],
+  plugins: [
+    react(),
+    nodePolyfills() // Standardizes Buffer and global across wallet providers
+  ],
+  base: '/VoiVoting/' // Required for GitHub Pages asset routing
 })

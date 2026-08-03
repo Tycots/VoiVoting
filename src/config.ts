@@ -12,7 +12,7 @@ export const VOI_NETWORK = {
 } as const
 
 /** Reown (WalletConnect) project ID — https://cloud.reown.com */
-export const WALLETCONNECT_PROJECT_ID = import.meta.env.ab802c07b45ec4107b154be5e14234ff''
+export const WALLETCONNECT_PROJECT_ID ='ab802c07b45ec4107b154be5e14234ff'
 
 export const MAX_SLOTS = 10
 export const MAX_WHITELIST = 10
