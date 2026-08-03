@@ -5,7 +5,7 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 export default defineConfig({
   plugins: [
     react(),
-    nodePolyfills()
+    nodePolyfills(),
   ],
-  base: '/VoiVoting/' // Notice: ending in /VoiVoting/ without dist!
+  base: './',
 })
