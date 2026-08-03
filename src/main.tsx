@@ -1,28 +1,33 @@
-// 1. Global Polyfills - Must be imported at the very top for AVM/Algorand wallet SDKs
 import { Buffer } from 'buffer'
 
 if (typeof window !== 'undefined') {
-  (window as any).Buffer = (window as any).Buffer || Buffer;
-  (window as any).global = (window as any).global || window;
+  ;(globalThis as any).Buffer = (globalThis as any).Buffer ?? Buffer
+  ;(window as any).Buffer = (window as any).Buffer ?? Buffer
+  ;(globalThis as any).global = (globalThis as any).global ?? globalThis
+  ;(window as any).global = (window as any).global ?? window
 }
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { WalletProvider } from '@txnlab/use-wallet-react'
-import App from './App'
-import './index.css'
-import { walletManager } from './lib/wallet'
+async function bootstrap() {
+  const React = (await import('react')).default
+  const ReactDOM = (await import('react-dom/client')).default
+  const { WalletProvider } = await import('@txnlab/use-wallet-react')
+  const { walletManager } = await import('./lib/wallet')
+  const App = (await import('./App')).default
+  await import('./index.css')
 
-const rootEl = document.getElementById('root')
+  const rootEl = document.getElementById('root')
 
-if (!rootEl) {
-  throw new Error('Root element #root was not found')
+  if (!rootEl) {
+    throw new Error('Root element #root was not found')
+  }
+
+  ReactDOM.createRoot(rootEl).render(
+    <React.StrictMode>
+      <WalletProvider manager={walletManager}>
+        <App />
+      </WalletProvider>
+    </React.StrictMode>,
+  )
 }
 
-ReactDOM.createRoot(rootEl).render(
-  <React.StrictMode>
-    <WalletProvider manager={walletManager}>
-      <App />
-    </WalletProvider>
-  </React.StrictMode>
-)
+void bootstrap()
