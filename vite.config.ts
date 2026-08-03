@@ -5,7 +5,7 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 export default defineConfig({
   plugins: [
     react(),
-    nodePolyfills() // Standardizes Buffer and global across wallet providers
+    nodePolyfills()
   ],
-  base: '/VoiVoting/' // Required for GitHub Pages asset routing
+  base: '/VoiVoting/' // Notice: ending in /VoiVoting/ without dist!
 })
